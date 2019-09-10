@@ -58,4 +58,7 @@ typings/
 .env
 
 # next.js build output
-.next
+.nex
+
+node_modules/
+package-lock.jsont
