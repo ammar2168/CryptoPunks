@@ -61,4 +61,5 @@ typings/
 .nex
 
 node_modules/
-package-lock.jsont
+package-lock.json
+.python-version
