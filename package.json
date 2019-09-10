@@ -1,0 +1,23 @@
+{
+  "name": "cp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha src/test/* --recursive",
+    "start": "node src/index.js"
+  },
+  "author": "MD",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cron": "^1.7.2",
+    "express": "^4.17.1",
+    "web3": "^1.2.1"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.0",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2"
+  }
+}
