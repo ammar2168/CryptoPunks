@@ -10,7 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 routes(app);
 
 var server = app.listen(Config.PORT, function () {
-    console.log("CryptoPunk API starting..");
+    console.log("################################################");
+    console.log("CryptoPunk API starting please wait...");
+    console.log("################################################");
 });
 
 const CryptoPunkServices = require("./services/CryptoPunkServices");
@@ -19,3 +21,5 @@ cryptoPunkServices.updatePunksForSale();
 
 var { updatePunksForSaleCronJob } = require("./CryptoPunksForSaleUpdaterCron");
 updatePunksForSaleCronJob();
+
+module.exports = app
