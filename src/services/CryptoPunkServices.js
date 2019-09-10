@@ -104,7 +104,7 @@ class CryptoPunkService {
     
         if(!hasStarted){
           console.log("################################################");
-          console.log("  API Server started, Listening on port: ", Config.PORT);
+          console.log("    API Server started, Listening on port: ", Config.PORT);
           console.log("################################################");
           hasStarted = true;
         }
