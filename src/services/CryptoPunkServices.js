@@ -9,10 +9,34 @@ var hasStarted = false;
 
 class CryptoPunkService {
 
-
-     // returns the global array that maintains the punks available for sale
-     async getPunksForSale(){
+    async getPunkInfo(punkIndex){
+        const isValidRequest = this.validatePunkIndex(punkIndex);
+        if(!isValidRequest){
+            throw("Invalid punk index: '" + punkIndex + "', index must be a postive number in the range 0-9999");
+        }
+        let res = this.getPunkDetails(punkIndex);
+        res.punkIndex = punkIndex;
+        var fetchedPunkOffer = await contract.methods.punksOfferedForSale(punkIndex).call();
+        var fetchedPunkBids = await contract.methods.punkBids(punkIndex).call();
+        res.owner = await contract.methods.punkIndexToAddress(punkIndex).call();
+        res.isForSale = fetchedPunkOffer.isForSale;
+        res.forSalePrice = fetchedPunkOffer.minValue + " wei";
+        res.currentBid = fetchedPunkBids.value + " wei";
+        return res;
+    }
+    
+    // returns the global array that maintains the punks available for sale
+    async getPunksForSale(){
         return punksForSale;
+    }
+    
+    // Gets Punk's details from CryptoPunks.json
+    getPunkDetails(punkIndex){
+        const punkIndexStr = "" + punkIndex;
+        if(CryproPunkDetails[punkIndexStr]){
+            return CryproPunkDetails[punkIndexStr];
+        }
+        else return {};
     }
     
     async updatePunksForSale(){
@@ -85,6 +109,12 @@ class CryptoPunkService {
         }
     }
 
+    validatePunkIndex(punkIndex){         
+        if( isNaN(punkIndex) || punkIndex < 0 || punkIndex > 9999){
+            return false;
+        }
+        return true;
+    }
 }
 
 module.exports = CryptoPunkService;
