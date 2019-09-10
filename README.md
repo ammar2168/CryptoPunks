@@ -96,7 +96,7 @@ None
 
 * **Sample Call:**
 ```
-GET /api/v1/punk/1001 HTTP/1.1
+GET /api/v1/punk/2256 HTTP/1.1
 Host: localhost:8080
 cache-control: no-cache
 Postman-Token: 09e94ef8-7c59-4c8a-b7c9-4833387cc027
