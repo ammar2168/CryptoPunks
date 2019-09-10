@@ -12,7 +12,7 @@ class CryptoPunkService {
     async getPunkInfo(punkIndex){
         const isValidRequest = this.validatePunkIndex(punkIndex);
         if(!isValidRequest){
-            throw("Invalid punk index: '" + punkIndex + "', index must be a postive number in the range 0-9999");
+            throw("Invalid punk index: '" + punkIndex + "', index must be a positive number in the range 0-9999");
         }
         let res = this.getPunkDetails(punkIndex);
         res.punkIndex = punkIndex;
@@ -40,7 +40,8 @@ class CryptoPunkService {
     }
     
     async updatePunksForSale(){
-
+        
+        console.log('info : updating punks-for-sale cache')
         // Getting all past events about punks offered for sale
         var punksOfferedLogs = await contract.getPastEvents('PunkOffered', {
           fromBlock: Config.STARTBLOCK,
